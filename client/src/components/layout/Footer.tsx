@@ -1,4 +1,5 @@
 import { FaLinkedinIn, FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";
+import { Logo } from "@/components/ui/logo";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -8,8 +9,8 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
-            <a href="#home" className="text-2xl font-bold font-poppins text-primary">
-              Abhishek<span className="text-white">.dev</span>
+            <a href="#home">
+              <Logo className="font-poppins mb-2" />
             </a>
             <p className="text-gray-400 mt-2">Java Full Stack Developer & AI Enthusiast</p>
           </div>

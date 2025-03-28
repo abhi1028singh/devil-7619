@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/lib/animations";
+import { Logo } from "@/components/ui/logo";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,13 +50,12 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           <a 
             href="#home" 
-            className="text-2xl font-bold font-poppins text-primary"
             onClick={(e) => {
               e.preventDefault();
               handleNavClick("#home");
             }}
           >
-            Abhishek<span className="text-white">.dev</span>
+            <Logo className="font-poppins" />
           </a>
           
           {/* Desktop Navigation */}
