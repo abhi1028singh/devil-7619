@@ -4,9 +4,20 @@ import { useLocation } from "wouter";
 import { Logo } from "@/components/ui/logo";
 import welcomeImagePath from "@assets/WhatsApp Image 2025-03-28 at 18.22.57_591df2f6.jpg";
 
+// Skills to display with their associated colors
+const skills = [
+  { name: "JAVA", color: "#f89820" },
+  { name: "AI", color: "#3498db" },
+  { name: "EXCEL", color: "#2ecc71" },
+  { name: "FULL STACK", color: "#e74c3c" },
+  { name: "UI/UX", color: "#9b59b6" },
+  { name: "GRAPHIC DESIGN", color: "#f1c40f" }
+];
+
 export default function Welcome() {
   const [, setLocation] = useLocation();
   const [loading, setLoading] = useState(true);
+  const [activeSkillIndex, setActiveSkillIndex] = useState(0);
 
   // Function to navigate to the main portfolio
   const navigateToPortfolio = useCallback(() => {
@@ -27,6 +38,17 @@ export default function Welcome() {
     
     return () => clearTimeout(timer);
   }, []);
+  
+  // Rotate through skills automatically
+  useEffect(() => {
+    if (!loading) {
+      const interval = setInterval(() => {
+        setActiveSkillIndex((prev) => (prev + 1) % skills.length);
+      }, 2000);
+      
+      return () => clearInterval(interval);
+    }
+  }, [loading]);
   
   // Handle keyboard navigation
   useEffect(() => {
@@ -108,11 +130,129 @@ export default function Welcome() {
           <div className="w-12 h-12 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
         </motion.div>
         
+        {/* Animated Skills Showcase */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: loading ? 0 : 1, scale: loading ? 0.8 : 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mt-8 mb-10"
+        >
+          <div className="flex flex-col items-center">
+            <motion.h2
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2.8, duration: 0.5 }}
+              className="text-xl text-white mb-6 font-semibold text-center"
+            >
+              My Key Skills
+            </motion.h2>
+            
+            <div className="w-60 h-60 md:w-72 md:h-72 relative perspective">
+              <div className="absolute inset-0 bg-black/20 backdrop-blur-sm rounded-xl border border-primary/20 shadow-xl flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 to-black/90 z-0"></div>
+                
+                {/* Animated gradient background */}
+                <div className="absolute inset-0 z-0 opacity-30">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-gradient-x"></div>
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/20 to-transparent animate-gradient-y"></div>
+                </div>
+                
+                {/* Floating particles */}
+                <div className="absolute inset-0 overflow-hidden">
+                  {Array.from({ length: 20 }).map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute rounded-full bg-white/30"
+                      style={{
+                        width: Math.random() * 6 + 2,
+                        height: Math.random() * 6 + 2,
+                        left: `${Math.random() * 100}%`,
+                        top: `${Math.random() * 100}%`
+                      }}
+                      animate={{
+                        y: [0, -100],
+                        opacity: [0, 0.8, 0]
+                      }}
+                      transition={{
+                        duration: Math.random() * 10 + 10,
+                        repeat: Infinity,
+                        delay: Math.random() * 5,
+                        ease: "linear"
+                      }}
+                    />
+                  ))}
+                </div>
+                
+                {/* Skills showcase with animation */}
+                <div className="relative z-10 flex flex-col items-center justify-center p-6">
+                  <div className="h-28 flex items-center justify-center">
+                    {skills.map((skill, index) => (
+                      <motion.div
+                        key={skill.name}
+                        className="absolute flex items-center justify-center"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ 
+                          opacity: activeSkillIndex === index ? 1 : 0,
+                          scale: activeSkillIndex === index ? 1 : 0.8,
+                          y: activeSkillIndex === index ? 0 : 20
+                        }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <div 
+                          className="text-3xl md:text-4xl font-bold tracking-wider"
+                          style={{ 
+                            background: `linear-gradient(to right, ${skill.color}, white)`,
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent"
+                          }}
+                        >
+                          {skill.name}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                  
+                  {/* Progress dots */}
+                  <div className="flex gap-2 mt-8">
+                    {skills.map((_, index) => (
+                      <motion.div
+                        key={index}
+                        className={`w-2 h-2 rounded-full cursor-pointer ${
+                          activeSkillIndex === index ? "bg-primary" : "bg-gray-500"
+                        }`}
+                        onClick={() => setActiveSkillIndex(index)}
+                        whileHover={{ scale: 1.5 }}
+                        animate={{
+                          scale: activeSkillIndex === index ? [1, 1.2, 1] : 1
+                        }}
+                        transition={{
+                          duration: 1,
+                          repeat: activeSkillIndex === index ? Infinity : 0,
+                          repeatType: "reverse"
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 3.0, duration: 0.5 }}
+              className="text-gray-400 text-sm mt-4 text-center max-w-xs"
+            >
+              Click the dots to explore my core competencies
+            </motion.p>
+          </div>
+        </motion.div>
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: loading ? 0 : 1, y: loading ? 20 : 0 }}
           transition={{ duration: 0.7 }}
-          className="mt-12 relative"
+          className="mt-8 relative"
         >
           {/* Glowing circles behind button */}
           <div className="absolute -inset-1 rounded-xl blur-xl bg-gradient-to-r from-primary/50 to-purple-600/50 opacity-70 group-hover:opacity-100 transition duration-1000"></div>

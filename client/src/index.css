@@ -38,4 +38,36 @@
       transform: translateY(0px);
     }
   }
+  
+  /* Gradient animations for skills showcase */
+  @keyframes gradient-x {
+    0%, 100% {
+      transform: translateX(-50%);
+    }
+    50% {
+      transform: translateX(50%);
+    }
+  }
+
+  @keyframes gradient-y {
+    0%, 100% {
+      transform: translateY(-50%);
+    }
+    50% {
+      transform: translateY(50%);
+    }
+  }
+
+  .animate-gradient-x {
+    animation: gradient-x 15s ease infinite;
+  }
+
+  .animate-gradient-y {
+    animation: gradient-y 15s ease infinite;
+  }
+
+  /* Add perspective for 3D-like effect */
+  .perspective {
+    perspective: 1000px;
+  }
 }
