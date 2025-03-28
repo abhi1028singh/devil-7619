@@ -41,7 +41,7 @@ export default function Welcome() {
   }, [loading, navigateToPortfolio]);
 
   return (
-    <div className="h-screen w-full bg-gray-900 flex flex-col items-center justify-center p-4">
+    <div className="h-screen w-full bg-gradient-to-b from-slate-950 via-slate-900 to-indigo-950 flex flex-col items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}

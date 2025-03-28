@@ -26,7 +26,7 @@ export default function MainPortfolio() {
   }, []);
 
   return (
-    <div className="bg-gray-900 text-white font-inter min-h-screen">
+    <div className="bg-gradient-to-b from-slate-950 via-slate-900 to-indigo-950 text-white font-inter min-h-screen">
       {/* Progress Bar */}
       <div className="fixed top-0 left-0 w-full h-1 bg-gray-800 z-50">
         <motion.div
