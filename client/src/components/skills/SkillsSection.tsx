@@ -61,6 +61,32 @@ export default function SkillsSection() {
           </TabButton>
         </div>
         
+        {/* Add progress bars for skills */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          {skills[activeTab].map((skill, index) => (
+            <motion.div
+              key={skill.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-gray-800 p-4 rounded-lg"
+            >
+              <div className="flex justify-between mb-2">
+                <span className="text-white">{skill.name}</span>
+                <span className="text-primary">{skill.level}%</span>
+              </div>
+              <div className="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: `${skill.level}%` }}
+                  transition={{ duration: 1, ease: "easeOut" }}
+                  className="h-full bg-primary rounded-full"
+                />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        
         {/* Development Skills */}
         <motion.div 
           initial="hidden"

@@ -35,9 +35,21 @@ export default function Footer() {
                 <FaGithub size={18} />
               </a>
               <a 
-                href="https://twitter.com" 
+                href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                className="text-gray-400 hover:text-primary transition duration-300"
+              >
+                <FaInstagram size={18} />
+              </a>
+              <a 
+                href="https://dev.to" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-primary transition duration-300"
+              >
+                <FaDev size={18} />
+              </a>"
                 className="text-gray-400 hover:text-primary transition duration-300"
               >
                 <FaTwitter size={18} />
