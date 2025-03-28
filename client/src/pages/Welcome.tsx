@@ -63,16 +63,16 @@ export default function Welcome() {
   }, [loading, navigateToPortfolio]);
 
   return (
-    <div className="h-screen w-full bg-gradient-to-b from-slate-950 via-slate-900 to-indigo-950 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen w-full bg-gradient-to-b from-slate-950 via-slate-900 to-indigo-950 flex flex-col items-center justify-center p-4 py-8 overflow-x-hidden">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
         className="text-center max-w-4xl w-full"
       >
-        <Logo className="text-5xl mb-8" />
+        <Logo className="text-4xl md:text-5xl mb-6 md:mb-8" />
         
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 mb-8">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-6 md:gap-8 mb-8 px-2">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -82,16 +82,16 @@ export default function Welcome() {
             <img 
               src={welcomeImagePath} 
               alt="Abhishek Singh" 
-              className="w-64 h-64 object-cover rounded-lg shadow-2xl border-2 border-primary/30"
+              className="w-52 h-52 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover rounded-lg shadow-2xl border-2 border-primary/30"
             />
           </motion.div>
           
-          <div className="flex flex-col items-center lg:items-start">
+          <div className="flex flex-col items-center lg:items-start max-w-full">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.5 }}
-              className="text-4xl font-bold text-white mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 text-center lg:text-left"
             >
               Welcome to My Portfolio
             </motion.h1>
@@ -100,9 +100,9 @@ export default function Welcome() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="text-left p-6 bg-gray-800/50 rounded-lg border border-gray-700 backdrop-blur-sm mb-6"
+              className="text-left p-4 sm:p-6 bg-gray-800/50 rounded-lg border border-gray-700 backdrop-blur-sm mb-4 sm:mb-6 w-full"
             >
-              <p className="text-gray-300 italic text-lg mb-4">
+              <p className="text-gray-300 italic text-base sm:text-lg mb-3 sm:mb-4">
                 "In the realm of innovation, I transform complexity into elegant solutions. 
                 Building bridges between Java development and AI is not just my profession, 
                 it's my creative expression."
@@ -114,7 +114,7 @@ export default function Welcome() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.8, duration: 0.5 }}
-              className="text-gray-300 mb-8 max-w-lg"
+              className="text-gray-300 mb-4 sm:mb-8 max-w-lg text-center lg:text-left"
             >
               Exploring the intersection of Java development and AI innovation
             </motion.p>
@@ -147,7 +147,7 @@ export default function Welcome() {
               My Key Skills
             </motion.h2>
             
-            <div className="w-60 h-60 md:w-72 md:h-72 relative perspective">
+            <div className="w-72 h-48 sm:h-56 md:w-80 md:h-60 relative perspective mx-auto">
               <div className="absolute inset-0 bg-black/20 backdrop-blur-sm rounded-xl border border-primary/20 shadow-xl flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 to-black/90 z-0"></div>
                 
@@ -157,9 +157,9 @@ export default function Welcome() {
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/20 to-transparent animate-gradient-y"></div>
                 </div>
                 
-                {/* Floating particles */}
+                {/* Floating particles - reduced number for better performance */}
                 <div className="absolute inset-0 overflow-hidden">
-                  {Array.from({ length: 20 }).map((_, i) => (
+                  {Array.from({ length: 10 }).map((_, i) => (
                     <motion.div
                       key={i}
                       className="absolute rounded-full bg-white/30"
@@ -185,7 +185,7 @@ export default function Welcome() {
                 
                 {/* Skills showcase with animation */}
                 <div className="relative z-10 flex flex-col items-center justify-center p-6">
-                  <div className="h-28 flex items-center justify-center">
+                  <div className="h-20 flex items-center justify-center">
                     {skills.map((skill, index) => (
                       <motion.div
                         key={skill.name}
@@ -199,7 +199,7 @@ export default function Welcome() {
                         transition={{ duration: 0.5 }}
                       >
                         <div 
-                          className="text-3xl md:text-4xl font-bold tracking-wider"
+                          className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wider text-center w-full mx-auto px-2"
                           style={{ 
                             background: `linear-gradient(to right, ${skill.color}, white)`,
                             WebkitBackgroundClip: "text",
@@ -213,7 +213,7 @@ export default function Welcome() {
                   </div>
                   
                   {/* Progress dots */}
-                  <div className="flex gap-2 mt-8">
+                  <div className="flex flex-wrap justify-center gap-2 mt-6">
                     {skills.map((_, index) => (
                       <motion.div
                         key={index}
@@ -261,7 +261,7 @@ export default function Welcome() {
           <div className="animate-float">
             <motion.button
               onClick={navigateToPortfolio}
-              className="px-10 py-4 bg-primary text-white rounded-lg font-medium text-lg relative overflow-hidden group shadow-lg shadow-primary/20"
+              className="px-8 sm:px-10 py-3 sm:py-4 bg-primary text-white rounded-lg font-medium text-base sm:text-lg relative overflow-hidden group shadow-lg shadow-primary/20"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
