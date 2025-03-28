@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Mesh } from 'three';
 import { motion } from 'framer-motion';
+import { Canvas } from '@react-three/fiber'; // Added import for Canvas
 
 // Skills to display on the cube
 const skills = [
@@ -14,7 +15,7 @@ const skills = [
 ];
 
 // A simpler text component that works with basic Three.js
-function TextPlane({ text, position, rotation, color }: { 
+function TextPlane({ text, position, rotation, color }: {
   text: string,
   position: [number, number, number],
   rotation: [number, number, number],
@@ -23,9 +24,9 @@ function TextPlane({ text, position, rotation, color }: {
   return (
     <mesh position={position} rotation={rotation}>
       <planeGeometry args={[1.8, 1.8]} />
-      <meshStandardMaterial 
-        color={color} 
-        emissive={color} 
+      <meshStandardMaterial
+        color={color}
+        emissive={color}
         emissiveIntensity={0.4}
         metalness={0.8}
         roughness={0.2}
@@ -36,16 +37,16 @@ function TextPlane({ text, position, rotation, color }: {
 }
 
 export function SkillsCube({ autoRotate = true, speed = 0.01 }) {
-  const meshRef = useRef<Mesh>(null);
+  const meshRef = useRef<THREE.Mesh>(null); // Added THREE.Mesh type annotation
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
-  
+
   // Rotate the cube every frame
   useFrame(() => {
     if (meshRef.current && autoRotate) {
       // Apply different rotation speeds based on state
       const rotationSpeed = hovered ? speed * 2 : clicked ? speed * 0.5 : speed;
-      
+
       meshRef.current.rotation.x += rotationSpeed;
       meshRef.current.rotation.y += rotationSpeed * 1.5;
     }
@@ -60,14 +61,14 @@ export function SkillsCube({ autoRotate = true, speed = 0.01 }) {
       scale={clicked ? 1.2 : hovered ? 1.1 : 1}
     >
       <boxGeometry args={[2.5, 2.5, 2.5]} />
-      <meshStandardMaterial 
+      <meshStandardMaterial
         color="black"
         metalness={0.7}
         roughness={0.2}
         transparent
         opacity={0.8}
       />
-      
+
       {/* Skills color planes on each face */}
       {skills.map((skill, index) => (
         <TextPlane
@@ -93,7 +94,11 @@ export default function SkillsCubeContainer() {
       style={{ margin: 'auto' }}
     >
       <div className="w-full h-full rounded-xl overflow-hidden bg-black/20 backdrop-blur-sm border border-primary/20 shadow-xl">
-        {/* This div would contain the actual Three.js canvas */}
+        <Canvas> {/* Added Three.js Canvas */}
+          <ambientLight intensity={0.5} />
+          <pointLight position={[10, 10, 10]} />
+          <SkillsCube />
+        </Canvas>
       </div>
     </motion.div>
   );

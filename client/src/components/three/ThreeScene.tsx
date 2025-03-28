@@ -6,11 +6,20 @@ import { SkillsCube } from './SkillsCube';
 
 export default function ThreeScene() {
   const [mounted, setMounted] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     setMounted(true);
     return () => setMounted(false);
   }, []);
+
+  if (error) {
+    return (
+      <div className="relative w-60 h-60 md:w-72 md:h-72 rounded-xl overflow-hidden bg-black/20 backdrop-blur-sm border border-primary/20 shadow-xl flex items-center justify-center">
+        <p className="text-red-400 text-sm">Failed to load 3D scene</p>
+      </div>
+    );
+  }
 
   if (!mounted) return null;
 
@@ -19,7 +28,12 @@ export default function ThreeScene() {
       <Canvas
         camera={{ position: [0, 0, 5], fov: 45 }}
         style={{ width: '100%', height: '100%' }}
-        gl={{ preserveDrawingBuffer: true }}
+        gl={{ 
+          preserveDrawingBuffer: true,
+          antialias: true,
+          alpha: true
+        }}
+        onError={(e) => setError(e)}
       >
         <Suspense fallback={null}>
           <ambientLight intensity={1} />
