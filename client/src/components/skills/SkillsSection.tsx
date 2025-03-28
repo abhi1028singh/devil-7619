@@ -1,76 +1,58 @@
 import { motion } from "framer-motion";
-import ThreeScene from "../three/ThreeScene";
 
-// Define skills data
 const skills = [
   {
-    category: "Programming",
-    items: ["Java", "Python", "JavaScript", "TypeScript", "C++"]
+    category: "Development",
+    items: ["Java", "Spring Boot", "Node.js", "React", "TypeScript"]
   },
   {
-    category: "Web Development",
-    items: ["React", "Node.js", "Express", "HTML5", "CSS3", "Tailwind"]
+    category: "AI & Data",
+    items: ["Machine Learning", "TensorFlow", "Data Analysis", "Neural Networks"]
   },
   {
-    category: "AI & ML",
-    items: ["TensorFlow", "PyTorch", "Scikit-learn", "Natural Language Processing"]
+    category: "Design",
+    items: ["UI/UX Design", "Figma", "Adobe XD", "Responsive Design"]
   },
   {
     category: "Tools & Others",
-    items: ["Git", "Docker", "AWS", "MongoDB", "PostgreSQL", "RESTful APIs"]
+    items: ["Git", "Docker", "AWS", "Agile Methodology"]
   }
 ];
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-20 bg-gray-900">
+    <section id="skills" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <motion.div
+        <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-3xl md:text-4xl font-bold text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Technical Skills</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise and tools I work with.
-          </p>
-        </motion.div>
+          Skills & Expertise
+        </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {skills.map((category, index) => (
-              <motion.div
-                key={category.category}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gray-800/50 p-6 rounded-lg border border-gray-700"
-              >
-                <h3 className="text-xl font-semibold text-primary mb-4">{category.category}</h3>
-                <ul className="space-y-2">
-                  {category.items.map((skill) => (
-                    <li key={skill} className="text-gray-300 flex items-center">
-                      <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
-                      {skill}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex justify-center"
-          >
-            <ThreeScene />
-          </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {skills.map((category, index) => (
+            <motion.div
+              key={category.category}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-gray-800/50 p-6 rounded-lg border border-gray-700 hover:border-primary/50 transition-colors"
+            >
+              <h3 className="text-xl font-semibold text-primary mb-4">{category.category}</h3>
+              <ul className="space-y-2">
+                {category.items.map((skill) => (
+                  <li key={skill} className="text-gray-300 flex items-center">
+                    <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
