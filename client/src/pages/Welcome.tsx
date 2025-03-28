@@ -7,33 +7,26 @@ import welcomeImagePath from "@assets/WhatsApp Image 2025-03-28 at 18.22.57_591d
 export default function Welcome() {
   const [, setLocation] = useLocation();
   const [loading, setLoading] = useState(true);
-  const [autoRedirect, setAutoRedirect] = useState(true);
 
+  // Function to navigate to the main portfolio
   const navigateToPortfolio = useCallback(() => {
-    setLoading(false);
-    // Cancel auto-redirect if user clicks button
-    setAutoRedirect(false);
+    // Create a nice transition effect before navigating
+    setLoading(true);
     
-    // Add a small delay for the animation
     setTimeout(() => {
       setLocation("/home");
     }, 400);
   }, [setLocation]);
 
+  // Show initial loading animation, but don't auto-redirect
   useEffect(() => {
-    // Show loading animation for 3 seconds before redirecting
-    let timer: NodeJS.Timeout | null = null;
+    // Just show loading animation for 3 seconds, then show the button
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
     
-    if (autoRedirect) {
-      timer = setTimeout(() => {
-        navigateToPortfolio();
-      }, 4000);
-    }
-
-    return () => {
-      if (timer) clearTimeout(timer);
-    };
-  }, [navigateToPortfolio, autoRedirect]);
+    return () => clearTimeout(timer);
+  }, []);
   
   // Handle keyboard navigation
   useEffect(() => {
