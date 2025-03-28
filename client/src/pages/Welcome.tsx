@@ -4,17 +4,16 @@ import { useLocation } from "wouter";
 import { Logo } from "@/components/ui/logo";
 import welcomeImagePath from "@assets/WhatsApp Image 2025-03-28 at 18.22.57_591df2f6.jpg";
 
-// Skills to display with their associated colors
-const skills = [
-  { name: "JAVA", color: "#f89820" },
-  { name: "AI", color: "#3498db" },
-  { name: "EXCEL", color: "#2ecc71" },
-  { name: "FULL STACK", color: "#e74c3c" },
-  { name: "UI/UX", color: "#9b59b6" },
-  { name: "GRAPHIC DESIGN", color: "#f1c40f" }
-];
-
 export default function Welcome() {
+  // Skills to display with their associated colors
+  const skills = [
+    { name: "JAVA", color: "#f89820" },
+    { name: "AI", color: "#3498db" },
+    { name: "EXCEL", color: "#2ecc71" },
+    { name: "FULL STACK", color: "#e74c3c" },
+    { name: "UI/UX", color: "#9b59b6" },
+    { name: "GRAPHIC DESIGN", color: "#f1c40f" }
+  ];
   const [, setLocation] = useLocation();
   const [loading, setLoading] = useState(true);
   const [activeSkillIndex, setActiveSkillIndex] = useState(0);
