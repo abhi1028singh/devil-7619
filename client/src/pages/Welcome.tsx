@@ -21,12 +21,15 @@ export default function Welcome() {
 
   // Function to navigate to the main portfolio
   const navigateToPortfolio = useCallback(() => {
-    // Create a nice transition effect before navigating
-    setLoading(true);
-    
-    setTimeout(() => {
-      setLocation("/home");
-    }, 400);
+    try {
+      setLoading(true);
+      setTimeout(() => {
+        setLocation("/portfolio");
+      }, 400);
+    } catch (error) {
+      console.error("Navigation error:", error);
+      setLoading(false);
+    }
   }, [setLocation]);
 
   // Show initial loading animation, but don't auto-redirect
