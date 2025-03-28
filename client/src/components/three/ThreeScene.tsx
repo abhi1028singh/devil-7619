@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Loader } from '@react-three/drei';
 import { SkillsCube } from './SkillsCube';
+import { LinearSRGBColorSpace } from 'three';
 
 export default function ThreeScene() {
   return (
