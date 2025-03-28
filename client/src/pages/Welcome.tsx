@@ -91,10 +91,17 @@ export default function Welcome() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.5 }}
-              className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 text-center lg:text-left"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center lg:text-left bg-gradient-to-r from-primary via-purple-500 to-pink-500 text-transparent bg-clip-text"
             >
               Welcome to My Portfolio
             </motion.h1>
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1, duration: 0.5 }}
+              className="absolute -z-10 blur-3xl rounded-full bg-primary/20 w-96 h-96 -top-20 -right-20"
+            />
             
             <motion.div
               initial={{ opacity: 0 }}
