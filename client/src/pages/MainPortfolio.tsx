@@ -7,6 +7,7 @@ import SkillsSection from "@/components/skills/SkillsSection";
 import ProjectsSection from "@/components/projects/ProjectsSection";
 import EducationSection from "@/components/education/EducationSection";
 import ContactSection from "@/components/contact/ContactSection";
+import FloatingContactButton from "@/components/contact/FloatingContactButton";
 import { motion } from "framer-motion";
 
 export default function MainPortfolio() {
@@ -47,6 +48,9 @@ export default function MainPortfolio() {
         <EducationSection />
         <ContactSection />
       </main>
+      
+      {/* Floating Contact Button */}
+      <FloatingContactButton />
       
       <Footer />
     </div>
