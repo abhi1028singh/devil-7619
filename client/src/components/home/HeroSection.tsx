@@ -54,7 +54,7 @@ export default function HeroSection() {
           >
             <div className="relative">
               <div className="absolute inset-0 bg-primary/20 rounded-lg blur-xl transform -translate-x-4 translate-y-4"></div>
-              <div className="relative z-10 border-4 border-primary shadow-lg overflow-hidden w-72 h-auto rounded-lg">
+              <div className="relative z-10 border-4 border-primary shadow-lg overflow-hidden w-72 h-auto rounded-lg bg-black">
                 <img 
                   src={AbhishekImage} 
                   alt="Abhishek Singh - Professional Portrait" 
