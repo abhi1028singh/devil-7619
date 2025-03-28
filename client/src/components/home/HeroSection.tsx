@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { fadeIn, fadeInUp, staggerContainer } from "@/lib/animations";
-import AbhishekImage from "@assets/WhatsApp Image 2025-03-28 at 18.22.57_591df2f6.jpg";
+import AbhishekImage from "@assets/WhatsApp Image 2025-03-28 at 18.15.02_601bf6e8.jpg";
 
 export default function HeroSection() {
   const scrollToSection = (id: string) => {
@@ -53,8 +53,8 @@ export default function HeroSection() {
             className="md:w-1/2 flex justify-center"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-black rounded-full opacity-100 transform -translate-x-4 translate-y-4"></div>
-              <div className="relative z-10 bg-black rounded-full border-4 border-primary shadow-lg overflow-hidden w-64 h-64">
+              <div className="absolute inset-0 bg-primary/20 rounded-lg blur-xl transform -translate-x-4 translate-y-4"></div>
+              <div className="relative z-10 border-4 border-primary shadow-lg overflow-hidden w-72 h-auto rounded-lg">
                 <img 
                   src={AbhishekImage} 
                   alt="Abhishek Singh - Professional Portrait" 
