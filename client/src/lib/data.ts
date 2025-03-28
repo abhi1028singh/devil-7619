@@ -4,8 +4,8 @@ export const personalInfo: PersonalInfo = {
   degree: "B.Tech in Computer Science (AI)",
   university: "Babu Banarasi Das University",
   cgpa: "8.5/10",
-  email: "abhishek.singh@example.com",
-  phone: "+91 98765 43210",
+  email: "abhisheksingh15560@gmail.com",
+  phone: "+91 9598411504",
   location: "Lucknow, Uttar Pradesh, India"
 };
 
@@ -82,7 +82,7 @@ export const education: EducationItem[] = [
     type: "bachelors",
     degree: "B.Tech in Computer Science (AI)",
     institution: "Babu Banarasi Das University, Lucknow",
-    period: "2020 - 2024",
+    period: "2020 - 2024 (Currently in 3rd Year, 6th Semester)",
     description: "Specialized in Artificial Intelligence with core computer science subjects. Maintained a CGPA of 8.5/10.",
     courses: [
       "Data Structures & Algorithms",
@@ -96,7 +96,7 @@ export const education: EducationItem[] = [
   {
     type: "highSchool",
     degree: "Higher Secondary Education",
-    institution: "City Montessori School, Lucknow",
+    institution: "P.N. Saigal Inter College, Sitapur",
     period: "2018 - 2020",
     description: "Completed higher secondary education with focus on Physics, Chemistry, and Mathematics. Secured 90% in final examinations."
   }

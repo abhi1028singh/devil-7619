@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { fadeIn, fadeInUp, staggerContainer } from "@/lib/animations";
-import AbhishekImage from "@assets/WhatsApp Image 2024-10-17 at 19.48.20_4c8c4970.jpg";
+import AbhishekImage from "@assets/WhatsApp Image 2025-03-28 at 18.15.02_601bf6e8.jpg";
 
 export default function HeroSection() {
   const scrollToSection = (id: string) => {
